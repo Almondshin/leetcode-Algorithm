@@ -10,27 +10,28 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-       ListNode answer = new ListNode();
-        ListNode a = answer;
-        ListNode a1 = list1;
-        ListNode a2 = list2;
+     			ListNode head = new ListNode();
+		ListNode cur;
+		
+		// 		시작점			조건				
+		for (cur = head; list1 != null && list2 != null;) {
+			if (list1.val > list2.val) {
+				cur.next = list2;
+				list2 = list2.next;
+			} else {
+				cur.next = list1;
+				list1 = list1.next;
+			}
+			cur = cur.next;		//한칸 전진의 초석
+		}
+		if(list1 != null) {
+			cur.next = list1;
+		}
+		if(list2 != null) {
+			cur.next = list2;
+		}
+		
+		return head.next;
         
-        while(a1 != null && a2 != null){
-            if(a1.val < a2.val){
-                a.next = a1;
-                a1 = a1.next;
-            }else{
-                a.next = a2;
-                a2 = a2.next;
-            }
-            a = a.next;
-        }
-        if(a1 != null){
-            a.next = a1;
-        }
-         if(a2 != null){
-            a.next = a2;
-        }
-        return answer.next;
     }
 }
