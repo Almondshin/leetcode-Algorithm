@@ -1,9 +1,8 @@
 class Solution {
     public int climbStairs(int n) {
-        if(n <=2){
+        if(n < 2){
             return n;
         }
-
         int [] answer = new int[n];
         answer[0] = 1;
         answer[1] = 2;
